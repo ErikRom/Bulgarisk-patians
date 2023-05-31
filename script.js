@@ -41,9 +41,6 @@ function submitButton() { /* Låter användaren skicka in sina val av korthögar
     for (let i = 0; i < txt1List.length; i++) {
         sum += Number(txt1List[i])
         txt1List[i] = Number(txt1List[i])
-        if (typeof(txt1List[i]) != Number) {
-            txt1List.pop([i])
-        }
     }
 
     if (sum > 52) {
