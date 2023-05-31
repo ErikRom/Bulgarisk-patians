@@ -28,19 +28,22 @@ function randomButton() { /* Låter användaren generera ett slumpmässigt antal
     document.getElementById("lista").value = randomCards /* Importerar siffrorna man skrivit in till listan som används */
 }
 
-function submitButton() { /* Låter användaren låsa in sina val av korthögar */
+function submitButton() { /* Låter användaren skicka in sina val av korthögar */
     document.getElementById("submit").disabled = true /* Gör att det inte går att trycka på knappen igen för att undvika spamm */
-    document.getElementById("skip").disabled = false
+    document.getElementById("skip").disabled = false /* Gör att det går att trycka på kanppen igen efter att den varit avstängd */
     document.getElementById("continue").disabled = false
     trueOrFalse = false
     let sum = 0
     let txt1List = []
-    txt1 = document.getElementById("lista")
+    txt1 = document.getElementById("lista") /* Tar det man skriver in i inmatningsrutan och gör till en sträng */
     txt1List = txt1.value.split(",")
 
     for (let i = 0; i < txt1List.length; i++) {
         sum += Number(txt1List[i])
         txt1List[i] = Number(txt1List[i])
+        if (typeof(txt1List[i]) != Number) {
+            txt1List.pop([i])
+        }
     }
 
     if (sum > 52) {
@@ -49,7 +52,7 @@ function submitButton() { /* Låter användaren låsa in sina val av korthögar 
     }
 
     else if (document.getElementById("lista").value == [""]) {
-        console.log("Submitta inte tommt")
+        console.log("Skriv in några högar med kort eller slumpa fram dem!")
         document.getElementById("submit").disabled = false
     }
 
